@@ -10,15 +10,15 @@ function findMatching(collection, match){
     return filteredCollection;
 }
 
+
+
 //* fuzzyMatch - This function takes an array of drivers' names and a string as arguments for querying the array, and returns all drivers whose names begin with the provided letters.
 
 function fuzzyMatch(collection, match){
     const matchLength = match.split('').length;
     const filteredCollection = collection.filter((element) => {
-      const elementSlice = element.split('').slice(0, matchLength).join('');
-        if( elementSlice === match){
-            return element;
-        }
+        const elementSlice = element.substring(0, matchLength);
+        return elementSlice === match;
     })
     return filteredCollection;
 }
@@ -27,9 +27,7 @@ function fuzzyMatch(collection, match){
 
 function matchName(collection, match){
     const filteredCollection = collection.filter((element) => {
-        if(element.name === match){
-            return element;
-        }
+        return element.name === match;
     })
     return filteredCollection;
 }
